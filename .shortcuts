@@ -1,0 +1,14 @@
+d ~/Documents
+dl ~/Downloads
+dk ~/Desktop
+# College related
+cs ~/Documents/CollegeSubmissions
+cwp ~/Documents/CollegeSubmissions/CWP
+cp2 ~/Documents/CollegeSubmissions/Capstone2
+# Bots
+gf ~/Documents/code/node/godfather
+sk ~/Documents/code/node/skyra
+# Codeforces
+cfp ~/Documents/code/python/codeforces
+# Personal projects
+6502 ~/Documents/code/c/6502
