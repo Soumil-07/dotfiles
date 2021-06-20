@@ -29,10 +29,10 @@ return require('packer').startup(function()
   -- smoth scrolling
   use 'psliwka/vim-smoothie'
 
-  -- file tree
-  use 'preservim/nerdtree'
-  -- NERDTree icons
-  use 'ryanoasis/vim-devicons'
+  use {
+    'ms-jpq/chadtree',
+    branch = 'chad'
+  }
 
   use 'akinsho/nvim-toggleterm.lua'
   require 'toggleterm'.setup {
@@ -90,10 +90,10 @@ return require('packer').startup(function()
 
     require 'nvim-treesitter.configs'.setup {
       highlight = {
-	enable = {'typescript', 'javascript', 'c'}
+	enable = {'typescript', 'javascript', 'c', 'go', 'python'}
       },
       indent = {
-	enable = {'typescript', 'javascript'}
+	enable = {'typescript', 'javascript', 'c', 'cpp'}
       }
     }
 

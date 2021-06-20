@@ -15,14 +15,20 @@ ENABLE_CORRECTION="true"
 plugins=(git zsh-autosuggestions tmux)
 ZSH_THEME="amuse"
 
+RIPGREP_CONFIG_PATH="~/.ripgreprc"
+
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-export EDITOR="vim"
+# User configuration
+export VISUAL=nvim
+export EDITOR=nvim
 
 alias vi="nvim --clean"
 alias vim="nvim"
+alias r="source ranger"
 # vi-mode for bash
 set -o vi
 

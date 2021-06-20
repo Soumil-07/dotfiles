@@ -26,10 +26,10 @@ function ReloadPlugins()
 endfunction
 
 autocmd BufWritePost $HOME/.config/nvim/lua/plugins.lua :call ReloadPlugins()
-" Start NERDTree when Vim starts with a directory argument.
+" Start file viewer when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+    \ execute 'CHADopen' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 " Set :mak depending on the file type
 autocmd BufEnter *.py :set makeprg=pylint\ --rcfile\ ~/.pylintrc\ *.py
 " autocmd BufEnter *.c,*.h :set makeprg=clang-tidy\ **/*.c
@@ -42,9 +42,12 @@ augroup TerminalEnter
     autocmd WinEnter term://* :startinsert
 augroup END
 
-nnoremap <leader>x :ToggleTerm<CR>
+nnoremap <silent><leader>xn :<c-u>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <leader>xa :ToggleTermOpenAll<CR>
+nnoremap <leader>xc :ToggleTermCloseAll<CR>
+nnoremap <leader>xx :ToggleTerm<CR>
 " Make <leader>x work inside a terminal too
-tnoremap <leader>x <C-\><C-n>:ToggleTerm<CR>
+tnoremap <leader>xx <C-\><C-n>:ToggleTerm<CR>
 
 " for feline
 set termguicolors
@@ -63,7 +66,7 @@ nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <leader>fg <cmd>GFiles<cr>
 nnoremap <leader>bf <cmd>Buffers<cr>
 
-nnoremap <leader>t <cmd>NERDTreeToggle<cr>
+nnoremap <leader>t <cmd>CHADopen<cr>
 nnoremap <leader>bp <cmd>bp<cr>
 nnoremap <leader>bn <cmd>bn<cr>
 
@@ -140,11 +143,9 @@ au FileType dap-repl lua require('dap.ext.autocompl').attach()
 let g:cmake_export_compile_commands = v:true
 let g:session_default_name = fnamemodify(getcwd(), ':t')
 
-" NERDTree conflicts with :bd
-noremap <leader>bd :bp<cr>:bd! #<cr>
+noremap <leader>bd :bp<cr>:Bdelete! <cr>
 
 set rtp+=/opt/homebrew/opt/fzf
-
 " Fugitive mappings
 nnoremap <leader>gc :Git ca<CR>
 nnoremap <leader>gpl :Git pull<CR>
