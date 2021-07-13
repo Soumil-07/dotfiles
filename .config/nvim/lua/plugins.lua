@@ -1,12 +1,6 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
-
 execute 'packadd packer.nvim'
 
 return require('packer').startup(function()
@@ -29,9 +23,10 @@ return require('packer').startup(function()
   -- smoth scrolling
   use 'psliwka/vim-smoothie'
 
+  -- File tree
   use {
-    'ms-jpq/chadtree',
-    branch = 'chad'
+    'kyazdani42/nvim-tree.lua',
+    commit = 'fd7f60e242205ea9efc9649101c81a07d5f458bb'
   }
 
   use 'akinsho/nvim-toggleterm.lua'
@@ -39,163 +34,65 @@ return require('packer').startup(function()
     direction = 'horizontal'
   }
 
-  -- comment keybindings
+  -- comment bindings
   use 'b3nj5m1n/kommentary'
   require('kommentary.config').configure_language('default', {
     prefer_single_line_comments = true
   })
 
-  -- parens
+  -- parens autoclosing
   use 'Raimondi/delimitMate'
-
-  -- register popup window
-  -- use 'tversteeg/registers.nvim'
-
-  -- clang-format support
-  use 'rhysd/vim-clang-format'
-
-  -- LSP config
-  use 'neovim/nvim-lspconfig'
-
   -- Mark annotator
   use 'kshenoy/vim-signature'
 
   -- Better syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-  require'nvim-treesitter.configs'.setup {
-    textobjects = {
-      select = {
-	enable = true,
-	keymaps = {
-	  -- You can use the capture groups defined in textobjects.scm
-	  ["af"] = "@function.outer",
-	  ["if"] = "@function.inner",
-	  ["ac"] = "@class.outer",
-	  ["ic"] = "@class.inner",
+  -- One Dark color theme
+  use 'navarasu/onedark.nvim'
 
-	  -- Or you can define your own textobjects like this
-	  ["iF"] = {
-	    python = "(function_definition) @function",
-	    cpp = "(function_definition) @function",
-	    c = "(function_definition) @function",
-	    java = "(method_declaration) @function",
-	  },
-	},
-      },
-    },
+  -- LSP config
+  use 'neovim/nvim-lspconfig'
+  -- Autocompletion
+  use 'hrsh7th/nvim-compe'
+  use 'ray-x/lsp_signature.nvim'
+  -- Formatting
+  use 'mhartington/formatter.nvim'
+
+  -- Startup screen
+  use 'mhinz/vim-startify'
+
+  -- Better session handling
+  use {
+    'xolox/vim-session',
+    requires = {{'xolox/vim-misc'}}
   }
 
+  -- Git helpers
+  use 'tpope/vim-fugitive'
+  use 'mbbill/undotree'
 
-    require 'nvim-treesitter.configs'.setup {
-      highlight = {
-	enable = {'typescript', 'javascript', 'c', 'go', 'python'}
-      },
-      indent = {
-	enable = {'typescript', 'javascript', 'c', 'cpp'}
-      }
-    }
+  -- CMake wrapepr
+  use 'vhdirk/vim-cmake'
 
-    -- One Dark color theme
-    use 'navarasu/onedark.nvim'
+  -- clang-format support
+  use 'rhysd/vim-clang-format'
 
-    use {
-      'hrsh7th/vim-vsnip',
-      requires = {{'hrsh7th/vim-vsnip-integ'}}
-    }
+  -- Vim list navigation
+  use 'tpope/vim-unimpaired'
 
-    -- Autocompletion
-    use 'hrsh7th/nvim-compe'
-    use 'ray-x/lsp_signature.nvim'
+  -- Auto-indentation detection
+  use 'tpope/vim-sleuth'
 
-    -- Startup screen
-    use 'mhinz/vim-startify'
+  -- Fuzzy finder
+  use 'junegunn/fzf.vim'
+  use 'junegunn/fzf'
+  -- :bufd is broken otherwise
+  use 'famiu/bufdelete.nvim'
 
-    -- Better session handling
-    use {
-      'xolox/vim-session',
-      requires = {{'xolox/vim-misc'}}
-    }
+  use {
+    'folke/which-key.nvim',
+  }
 
-    -- VSCode's lightbulb for neovim
-    use 'kosayoda/nvim-lightbulb'
-    -- Git helpers
-    use 'tpope/vim-fugitive'
-
-    -- Debugging support
-    use 'mfussenegger/nvim-dap'
-    use 'mfussenegger/nvim-dap-python'
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-
-    require("dapui").setup({
-      icons = {
-	expanded = "⯆",
-	collapsed = "⯈"
-      },
-      mappings = {
-	-- Use a table to apply multiple mappings
-	expand = {"<CR>", "<2-LeftMouse>"},
-	open = "o",
-	remove = "d",
-	edit = "e",
-      },
-      sidebar = {
-	elements = {
-	  -- You can change the order of elements in the sidebar
-	  "scopes",
-	  "breakpoints",
-	  "watches"
-	},
-	width = 40,
-	position = "left" -- Can be "left" or "right"
-      },
- --      tray = {
-	-- elements = {
-	--   "repl"
-	-- },
-	-- height = 10,
-	-- position = "bottom" -- Can be "bottom" or "top"
- --      },
-      floating = {
-	max_height = nil, -- These can be integers or a float between 0 and 1.
-	max_width = nil   -- Floats will be treated as percentage of your screen.
-      }
-    })
-
-    require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-    use 'theHamsta/nvim-dap-virtual-text'
-
-    use 'mbbill/undotree'
-
-    use 'vhdirk/vim-cmake'
-
-    -- Vim list navigation
-    use 'tpope/vim-unimpaired'
-
-    -- Snippets
-    use 'norcalli/snippets.nvim'	
-    require'snippets'.use_suggested_mappings()
-
-    use {
-      'amix/vim-zenroom2',
-      requires = {{'junegunn/goyo.vim'}}
-    }
-
-    -- Auto-indentation detection
-    use 'tpope/vim-sleuth'
-
-    use 'junegunn/fzf.vim'
-    use 'famiu/bufdelete.nvim'
-
-    use {
-      "folke/which-key.nvim",
-      config = function()
-	require("which-key").setup {
-	  plugins = {
-	    registers = true
-	  }
-	}
-      end
-    }
-  end)
+  use {'lukas-reineke/indent-blankline.nvim'}
+end)
