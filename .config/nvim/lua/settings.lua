@@ -69,7 +69,7 @@ cmd('highlight Pmenu ctermbg=gray guibg=#83a598')
 
 -- Disable using netrw for 'gx' and set it manually
 g.netrw_nogx = 1
-bind('n', 'gx', '<cmd>!xdg-open <cfile><CR>', { noremap = true })
+bind('n', 'gx', '<cmd>!open <cfile><CR>', { noremap = true })
 
 
 -- Remember last location in file

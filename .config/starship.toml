@@ -1,9 +1,0 @@
-[character]
-success_symbol = "[➜](bold green)"
-
-[python]
-python_binary = ["python3"]
-symbol = " "
-
-[cmd_duration]
-disabled = true

@@ -6,10 +6,8 @@ execute 'packadd packer.nvim'
 return require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
 
-  -- icons
-  use 'kyazdani42/nvim-web-devicons'
-
   -- status line
+  use 'kyazdani42/nvim-web-devicons'
   use 'famiu/feline.nvim'
   require('feline').setup()
   use {
@@ -20,13 +18,13 @@ return require('packer').startup(function()
   }
   require('gitsigns').setup()
 
-  -- smoth scrolling
+  -- smooth scrolling
   use 'psliwka/vim-smoothie'
 
   -- File tree
   use {
     'kyazdani42/nvim-tree.lua',
-    commit = 'fd7f60e242205ea9efc9649101c81a07d5f458bb'
+    commit = 'fd7f60e242205ea9efc9649101c81a07d5f458bb' -- Lock to this commit until it's fixed
   }
 
   use 'akinsho/nvim-toggleterm.lua'

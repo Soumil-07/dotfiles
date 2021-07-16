@@ -31,6 +31,8 @@ bind('n', '<Leader>wh', ':wincmd h<CR>', opts)
 bind('n', '<Leader>wj', ':wincmd j<CR>', opts)
 bind('n', '<Leader>wk', ':wincmd k<CR>', opts)
 bind('n', '<Leader>wl', ':wincmd l<CR>', opts)
+-- Quit window
+bind('n', '<Leader>wq', ':wincmd q<CR>', opts)
 
 -- Split windows
 bind('n', '<Leader>ws', ':wincmd s<CR>', opts)

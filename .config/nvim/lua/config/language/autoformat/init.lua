@@ -1,4 +1,4 @@
-local clang = require('config.language.autoformat.clang')
+local clang = require('config.language.autoformat.c')
 local python = require('config.language.autoformat.python')
 local utils = require('utils')
 
