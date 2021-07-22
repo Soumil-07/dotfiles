@@ -24,7 +24,6 @@ return require('packer').startup(function()
   -- File tree
   use {
     'kyazdani42/nvim-tree.lua',
-    commit = 'fd7f60e242205ea9efc9649101c81a07d5f458bb' -- Lock to this commit until it's fixed
   }
 
   use 'akinsho/nvim-toggleterm.lua'
@@ -57,14 +56,8 @@ return require('packer').startup(function()
   -- Formatting
   use 'mhartington/formatter.nvim'
 
-  -- Startup screen
-  use 'mhinz/vim-startify'
-
-  -- Better session handling
-  use {
-    'xolox/vim-session',
-    requires = {{'xolox/vim-misc'}}
-  }
+  use 'rmagatti/auto-session'
+  use 'jenterkin/vim-autosource'
 
   -- Git helpers
   use 'tpope/vim-fugitive'
@@ -83,8 +76,9 @@ return require('packer').startup(function()
   use 'tpope/vim-sleuth'
 
   -- Fuzzy finder
-  use 'junegunn/fzf.vim'
-  use 'junegunn/fzf'
+  use 'vijaymarupudi/nvim-fzf'
+  use 'ibhagwan/fzf-lua'
+
   -- :bufd is broken otherwise
   use 'famiu/bufdelete.nvim'
 

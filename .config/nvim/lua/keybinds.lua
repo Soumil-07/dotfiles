@@ -42,9 +42,10 @@ bind('n', '<Leader>wv', ':wincmd v<CR>', opts)
 bind('n', 'x', '"_x"', opts)
 
 -- fzf.vim bindings
-bind('n', '<Leader>ff', ':Files<CR>', opts)
-bind('n', '<Leader>fg', ':GFiles<CR>', opts)
-bind('n', '<Leader>bf', ':Buffers<CR>', opts)
+bind('n', '<Leader>ff', ':lua require(\'fzf-lua\').files()<CR>', opts)
+bind('n', '<Leader>fb', ':lua require(\'fzf-lua\').buffers()<CR>', opts)
+bind('n', '<Leader>gf', ':lua require(\'fzf-lua\').grep()<CR>', opts)
+bind('n', '<Leader>gw', ':lua require(\'fzf-lua\').grep_cword()<CR>', opts)
 
 -- Toggle NvimTree
 bind('n', '<Leader>t', ':NvimTreeToggle<CR>', opts)

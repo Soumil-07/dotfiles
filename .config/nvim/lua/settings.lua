@@ -95,5 +95,10 @@ utils.create_augroup({
     { 'BufReadPost', '*', 'lua require(\'settings\').RestoreCursor()' }
 }, 'RestoreCursorOnOpen')
 
+-- Enter insert mode in terminals automatically
+utils.create_augroup({
+    { 'TermEnter,WinEnter', 'term://*', 'startinsert'}
+}, 'TermInsertMode')
+
 return M
 

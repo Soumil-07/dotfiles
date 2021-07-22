@@ -15,6 +15,7 @@ setopt HIST_VERIFY
 setopt CORRECT
 setopt NO_BEEP
 setopt INC_APPEND_HISTORY
+setopt NO_CORRECT
 
 # Load aliases and shortcuts if they exist
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -64,9 +65,15 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 autoload zmv
 alias zcp='zmv -C'
 alias mmv="noglob zmv -W"
+function take() {
+  mkdir -p $@ && cd ${@:$#}
+}
 
 # dotfiles repo
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+export NVM_DIR=~/.nvm
+ [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Autosuggestions
 source $HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
