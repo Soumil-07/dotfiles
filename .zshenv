@@ -8,6 +8,8 @@ export SAVEHIST=1000
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
+# use GNU's less for mouse support
+export PAGER="/opt/homebrew/bin/less"
 
 . "$HOME/.cargo/env"
 export RIPGREP_CONFIG_PATH="~/.ripgreprc"

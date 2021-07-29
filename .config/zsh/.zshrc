@@ -28,6 +28,10 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
