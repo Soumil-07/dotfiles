@@ -45,6 +45,12 @@ map("n", "<leader>bd", ":bdelete<CR>", opts)
 -- Save file
 map("n", "<leader>w", ":write<CR>", opts)
 
+-- Window cmd shortcuts
+map("n", "wh", ":wincmd h<CR>", opts)
+map("n", "wl", ":wincmd l<CR>", opts)
+map("n", "wk", ":wincmd k<CR>", opts)
+map("n", "wj", ":wincmd j<CR>", opts)
+
 -- Save and quit
 map("n", "<leader>x", ":write | quit<CR>", opts)
 
