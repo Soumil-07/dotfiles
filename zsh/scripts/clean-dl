@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Silent cleanup: Trash files/folders in ~/Downloads not accessed in last 14 days
+
+TARGET_DIR="$HOME/Downloads"
+
+find "$TARGET_DIR" -atime +14 -print0 2>/dev/null | while IFS= read -r -d '' file; do
+    trash "$file" >/dev/null 2>&1
+done

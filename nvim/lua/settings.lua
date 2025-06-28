@@ -29,6 +29,8 @@ vim.o.autoread = true            -- Auto-reload file changed outside
 vim.o.showmode = false           -- Don't show --INSERT-- etc
 vim.o.laststatus = 3             -- Global statusline
 
+vim.o.gdefault = true         -- Use global substitutions by default
+
 vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -46,10 +48,10 @@ map("n", "<leader>bd", ":bdelete<CR>", opts)
 map("n", "<leader>w", ":write<CR>", opts)
 
 -- Window cmd shortcuts
-map("n", "wh", ":wincmd h<CR>", opts)
-map("n", "wl", ":wincmd l<CR>", opts)
-map("n", "wk", ":wincmd k<CR>", opts)
-map("n", "wj", ":wincmd j<CR>", opts)
+-- map("n", "wh", ":wincmd h<CR>", opts)
+-- map("n", "wl", ":wincmd l<CR>", opts)
+-- map("n", "wk", ":wincmd k<CR>", opts)
+-- map("n", "wj", ":wincmd j<CR>", opts)
 
 -- Save and quit
 map("n", "<leader>x", ":write | quit<CR>", opts)
