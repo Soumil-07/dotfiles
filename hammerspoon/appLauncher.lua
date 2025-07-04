@@ -24,6 +24,9 @@ function M:bindKeys()
   hs.hotkey.bind(M.modifiers, "w", function()
     hs.application.launchOrFocus("Whatsapp")
   end)
+  hs.hotkey.bind(M.modifiers, "d", function()
+    hs.application.launchOrFocus("Discord")
+  end)
 end
 
 return M
