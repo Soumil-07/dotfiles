@@ -113,3 +113,5 @@ export EDITOR=nvim
 source $MY_ZSH/aliases.zsh
 
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/:$MY_ZSH/scripts"
+
+source $MY_ZSH/env.zsh
