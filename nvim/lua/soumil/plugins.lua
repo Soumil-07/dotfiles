@@ -285,7 +285,12 @@ return require("lazy").setup({
             end,
         },
 
-        {"github/copilot.vim"},
+        {
+            "github/copilot.vim",
+            cmd = { "Copilot" },
+            enabled = false
+        },
+
         {
             "CopilotC-Nvim/CopilotChat.nvim",
             dependencies = {

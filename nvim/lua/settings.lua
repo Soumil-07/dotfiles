@@ -57,7 +57,7 @@ map("n", "<leader>w", ":write<CR>", opts)
 map("n", "<leader>x", ":write | quit<CR>", opts)
 
 -- Quit without saving
-map("n", "q", ":quit<CR>", opts)
+-- map("n", "q", ":quit<CR>", opts)
 
 vim.api.nvim_create_autocmd("BufEnter", {
   nested = true,

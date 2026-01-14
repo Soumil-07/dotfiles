@@ -1,5 +1,6 @@
 eval "$(zoxide init zsh)"
 
+
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 
 # If you come from bash you might have to change your $PATH.
@@ -13,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="alanpeabody"
-ZSH_THEME="random"
+ZSH_THEME="trapd00r"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -115,3 +116,4 @@ source $MY_ZSH/aliases.zsh
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/:$MY_ZSH/scripts"
 
 source $MY_ZSH/env.zsh
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

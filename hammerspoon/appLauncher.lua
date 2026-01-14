@@ -27,6 +27,12 @@ function M:bindKeys()
   hs.hotkey.bind(M.modifiers, "d", function()
     hs.application.launchOrFocus("Discord")
   end)
+  hs.hotkey.bind(M.modifiers, "o", function()
+    hs.application.launchOrFocus("Obsidian")
+  end)
+  hs.hotkey.bind(M.modifiers, "c", function()
+    hs.application.launchOrFocus("Visual Studio Code")
+  end)
 end
 
 return M

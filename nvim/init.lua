@@ -16,3 +16,5 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugins
 require("soumil.plugins")
 
+-- Load keymaps
+
